@@ -21,5 +21,3 @@ function randomPasswordGenerator($length) {
   return $password;
 };
 
-// prendo la lunghezza della password scelta dall'utente tramite il form
-$passwordLength = $_GET["passwordlength"] ?? false;

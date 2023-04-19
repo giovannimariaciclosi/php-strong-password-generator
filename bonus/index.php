@@ -2,13 +2,16 @@
 
 include_once './partials/functions.php';
 
+// prendo la lunghezza della password scelta dall'utente tramite il form
+$passwordLength = $_GET["passwordlength"] ?? false;
+
 session_start();
 
 // header('Location: showPassword.php');
 
 // se passwordLenght è stata settata dall'utente, genero una password di quella lunghezza, altrimenti no.
 if($passwordLength) {
-
+  $passwordGenerated = randomPasswordGenerator($passwordLength);
   $_SESSION['password'] = $passwordGenerated;
   header('Location: showPassword.php');
 }    
