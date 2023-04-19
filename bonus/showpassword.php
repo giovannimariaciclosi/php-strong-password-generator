@@ -5,8 +5,10 @@ include_once './partials/functions.php';
 session_start();
 
 $_SESSION['passwordlength'] = $passwordLength;
-$_SESSION['password'] = randomPasswordGenerator($passwordLength);
+$_SESSION['password'] = $passwordGenerated;
 
-if(!empty($_SESSION['passwordlength'])) {
-  echo "La tua password è: " . $_SESSION['password'];
-}
+echo "La tua password è: " . $passwordGenerated;
+
+// if(!empty($_SESSION['passwordlength'])) {
+//   echo "La tua password è: " . $_SESSION['password'];
+// }
