@@ -1,5 +1,21 @@
 <?php 
+
 include_once './partials/functions.php';
+
+session_start();
+
+header('Location: showPassword.php');
+
+
+
+// se passwordLenght è stata settata dall'utente, genero una password di quella lunghezza, altrimenti no.
+if($passwordLength) {
+  echo randomPasswordGenerator($passwordLength);
+  $_SESSION['passwordlength'] = $passwordLength;
+  $_SESSION['password'] = randomPasswordGenerator($passwordLength);
+}   
+
+
 ?>
 
 
