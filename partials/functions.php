@@ -17,8 +17,8 @@ function randomPasswordGenerator($length) {
       $password .= $randomSet[array_rand(str_split($randomSet))];
   }
 
-  // stampo il risultato
-  echo $password;
+  // restituisco il risultato
+  return $password;
 };
 
 // prendo la lunghezza della password scelta dall'utente tramite il form

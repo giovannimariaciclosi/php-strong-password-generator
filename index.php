@@ -2,6 +2,11 @@
 
 include_once './partials/functions.php';
 
+session_start();
+
+
+
+
 ?>
 
 
@@ -33,14 +38,16 @@ include_once './partials/functions.php';
   
     </form>
 
+    
+
     <pre>
       <?php 
-
         // se passwordLenght è stata settata dall'utente, genero una password di quella lunghezza, altrimenti no.
         if($passwordLength) {
           randomPasswordGenerator($passwordLength);
-        }
-
+          $_SESSION['passwordlength'] = randomPasswordGenerator($passwordLength);
+          header('Location: showPassword.php');
+        }    
       ?>
     </pre>
   </div>
