@@ -1,3 +1,10 @@
+<?php 
+
+include_once './partials/functions.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,36 +18,10 @@
 </head>
 <body>
 
-  <?php
-
-  $passwordLength = $_GET["passwordlength"];
-  
-  // funzione per generare una password random (di minimo 4 caratteri) che include un numero, una lettera minuscola, una lettera maiuscola ed un caratttere speciale
-  function randomPasswordGenerator($length) {
-
-    $password = '';
-    $passwordSets = ['1234567890', '%^&@*#(){}', 'ABCDEFGHJKLMNPQRSTUVWXYZ', 'abcdefghjkmnpqrstuvwxyz'];
-
-    // prendo caratteri random
-    foreach ($passwordSets as $passwordSet) {
-        $password .= $passwordSet[array_rand(str_split($passwordSet))];
-    }
-
-    // password di lunghezza $length
-    while (strlen($password) < $length) {
-        $randomSet = $passwordSets[array_rand($passwordSets)];
-        $password .= $randomSet[array_rand(str_split($randomSet))];
-    }
-
-    // stampo il risultato
-    echo $password;
-  };
-
-  ?>
 
   <div class="container">
     <h1>Strong Password Generator</h1>
-    <hr>
+    <hr class="pb-3">
   
     <form action="index.php" method="GET">
   
@@ -53,7 +34,14 @@
     </form>
 
     <pre>
-      <?php randomPasswordGenerator($passwordLength) ?>
+      <?php 
+
+        // se passwordLenght è stata settata dall'utente, genero una password di quella lunghezza, altrimenti no.
+        if($passwordLength) {
+          randomPasswordGenerator($passwordLength);
+        }
+
+      ?>
     </pre>
   </div>
 
